@@ -6,9 +6,9 @@
       :placeholder="placeholderText"
       class="my-4 flex-grow bg-transparent text-center focus:outline-none sm:my-0 sm:text-start"
     />
-    <Button
+    <ButtonPrimary
       :style="`${inverted ? 'background-color: white; color: #1d2130;' : ''}`"
-      :buttonText="buttonText"
+      :button-text="buttonText"
     />
   </div>
 </template>
