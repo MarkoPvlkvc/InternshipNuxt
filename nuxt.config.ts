@@ -10,4 +10,8 @@ export default defineNuxtConfig({
   },
   modules: ["@nuxt/eslint", "@nuxt/image"],
   image: {},
+  components: [
+    { path: "~/components/sections", pathPrefix: false },
+    "~/components",
+  ],
 });
