@@ -17,29 +17,113 @@
         <p class="mb-6 text-sm md:mb-9 md:text-base lg:mb-12 lg:text-lg">
           We will get back to you as soon as possible.
         </p>
-        <div class="grid grid-cols-2 gap-4">
-          <input
-            placeholder="Full Name"
-            class="rounded-lg bg-white p-5 text-sm focus:outline-none sm:text-base"
+        <form class="grid grid-cols-2 gap-4" @submit.prevent="submitForm">
+          <div class="flex flex-col gap-1">
+            <input
+              id="full-name"
+              v-model="formData.fullName"
+              name="full-name"
+              type="text"
+              placeholder="Full Name"
+              :class="[
+                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
+                {
+                  'border-red-500': v$.fullName.$error,
+                  'border-green-500': !v$.fullName.$invalid,
+                },
+              ]"
+              @change="v$.fullName.$touch"
+            />
+            <span v-if="v$.fullName.$error" class="text-xs text-red-500">{{
+              v$.fullName.$errors[0].$message
+            }}</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <input
+              id="company-name"
+              v-model="formData.companyName"
+              name="company-name"
+              type="text"
+              placeholder="Company Name"
+              :class="[
+                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
+                {
+                  'border-red-500': v$.companyName.$error,
+                  'border-green-500': !v$.companyName.$invalid,
+                },
+              ]"
+              @change="v$.companyName.$touch"
+            />
+            <span v-if="v$.companyName.$error" class="text-xs text-red-500">{{
+              v$.companyName.$errors[0].$message
+            }}</span>
+          </div>
+          <div class="col-span-2 flex flex-col gap-1">
+            <input
+              id="email"
+              v-model="formData.email"
+              name="email"
+              type="email"
+              placeholder="Work Email"
+              :class="[
+                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
+                {
+                  'border-red-500': v$.email.$error,
+                  'border-green-500': !v$.email.$invalid,
+                },
+              ]"
+              @change="v$.email.$touch"
+            />
+            <span v-if="v$.email.$error" class="text-xs text-red-500">{{
+              v$.email.$errors[0].$message
+            }}</span>
+          </div>
+          <div class="col-span-2 flex flex-col gap-1">
+            <input
+              id="subject"
+              v-model="formData.subject"
+              name="subject"
+              type="text"
+              placeholder="Subject"
+              :class="[
+                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
+                {
+                  'border-red-500': v$.subject.$error,
+                  'border-green-500': !v$.subject.$invalid,
+                },
+              ]"
+              @change="v$.subject.$touch"
+            />
+            <span v-if="v$.subject.$error" class="text-xs text-red-500">{{
+              v$.subject.$errors[0].$message
+            }}</span>
+          </div>
+          <div class="col-span-2 flex flex-col gap-1">
+            <input
+              id="message"
+              v-model="formData.message"
+              name="message"
+              type="text"
+              placeholder="Message"
+              :class="[
+                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
+                {
+                  'border-red-500': v$.message.$error,
+                  'border-green-500': !v$.message.$invalid,
+                },
+              ]"
+              @change="v$.message.$touch"
+            />
+            <span v-if="v$.message.$error" class="text-xs text-red-500">{{
+              v$.message.$errors[0].$message
+            }}</span>
+          </div>
+          <ButtonPrimary
+            type="submit"
+            button-text="Send"
+            class="col-span-2 w-full"
           />
-          <input
-            placeholder="Company Name"
-            class="rounded-lg bg-white p-5 text-sm focus:outline-none sm:text-base"
-          />
-          <input
-            placeholder="Work Email"
-            class="col-span-2 rounded-lg bg-white p-5 text-sm focus:outline-none sm:text-base"
-          />
-          <input
-            placeholder="Subject"
-            class="col-span-2 rounded-lg bg-white p-5 text-sm focus:outline-none sm:text-base"
-          />
-          <input
-            placeholder="Message"
-            class="col-span-2 rounded-lg bg-white p-5 text-sm focus:outline-none sm:text-base"
-          />
-          <ButtonPrimary button-text="Send" class="col-span-2 w-full" />
-        </div>
+        </form>
       </div>
 
       <div class="flex flex-col justify-center">
@@ -86,3 +170,55 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { reactive, computed } from "vue";
+import useVuelidate from "@vuelidate/core";
+import { required, email, helpers } from "@vuelidate/validators";
+
+const formData = reactive({
+  fullName: "",
+  companyName: "",
+  email: "",
+  subject: "",
+  message: "",
+});
+
+const rules = computed(() => {
+  return {
+    fullName: {
+      required: helpers.withMessage(
+        "The full name field is required",
+        required,
+      ),
+    },
+    companyName: {
+      required: helpers.withMessage(
+        "The company name field is required",
+        required,
+      ),
+    },
+    email: {
+      required: helpers.withMessage("The email field is required", required),
+      email: helpers.withMessage("Invalid email format", email),
+    },
+    subject: {
+      required: helpers.withMessage("The subject field is required", required),
+    },
+    message: {
+      required: helpers.withMessage("The message field is required", required),
+    },
+  };
+});
+
+const v$ = useVuelidate(rules, formData);
+
+const submitForm = () => {
+  v$.value.$validate().then((success) => {
+    if (!v$.value.$error) {
+      // Handle form submission
+      alert(success);
+    }
+  });
+};
+</script>

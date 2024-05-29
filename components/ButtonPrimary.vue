@@ -1,5 +1,5 @@
 <template>
-  <button :class="mergedClasses">
+  <button :class="mergedClasses" :type="type">
     {{ buttonText }}
   </button>
 </template>
@@ -16,6 +16,10 @@ export default {
     buttonText: {
       type: String,
       required: true,
+    },
+    type: {
+      type: String,
+      default: "button",
     },
   },
   computed: {
