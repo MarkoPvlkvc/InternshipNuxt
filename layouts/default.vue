@@ -1,10 +1,10 @@
 <template>
   <div>
     <nav
-      class="flex flex-col justify-center px-10 py-2 text-black lg:flex-row lg:items-center lg:justify-between"
+      class="mx-auto flex max-w-[85rem] flex-col justify-center px-10 py-2 text-black lg:flex-row lg:items-center lg:justify-between"
     >
       <p
-        class="mb-6 mt-2.5 flex justify-between font-roboto text-3xl font-bold lg:my-0"
+        class="mb-6 mt-2.5 flex justify-between font-roboto text-xl font-bold md:text-2xl lg:my-0 lg:text-3xl"
       >
         {Finsweet
         <button @click="toggleMenu">
@@ -12,14 +12,38 @@
         </button>
       </p>
       <div
-        :class="`flex flex-wrap items-center gap-8 overflow-hidden transition-all duration-500 ${isMenuOpen ? 'transition-max-height max-h-[1000px]' : 'max-h-0 transition-none'} lg:max-h-[1000px]`"
+        :class="`flex flex-wrap items-center gap-4 overflow-hidden transition-all duration-500 md:gap-6 lg:gap-8 ${isMenuOpen ? 'transition-max-height max-h-[1000px]' : 'max-h-0 transition-none'} lg:max-h-[1000px]`"
       >
-        <NuxtLink to="/" class="w-full lg:w-fit">Home</NuxtLink>
-        <NuxtLink to="/product" class="w-full lg:w-fit">Product</NuxtLink>
-        <NuxtLink to="/pricing" class="w-full lg:w-fit">Pricing</NuxtLink>
-        <NuxtLink to="/about_us" class="w-full lg:w-fit">About Us</NuxtLink>
-        <NuxtLink to="/blog" class="w-full lg:w-fit">Blog</NuxtLink>
-        <NuxtLink to="/contact" class="w-full lg:w-fit">Contact</NuxtLink>
+        <NuxtLink
+          to="/"
+          class="w-full underline-offset-2 hover:underline lg:w-fit"
+          >Home</NuxtLink
+        >
+        <NuxtLink
+          to="/product"
+          class="w-full underline-offset-2 hover:underline lg:w-fit"
+          >Product</NuxtLink
+        >
+        <NuxtLink
+          to="/pricing"
+          class="w-full underline-offset-2 hover:underline lg:w-fit"
+          >Pricing</NuxtLink
+        >
+        <NuxtLink
+          to="/about_us"
+          class="w-full underline-offset-2 hover:underline lg:w-fit"
+          >About Us</NuxtLink
+        >
+        <NuxtLink
+          to="/blog"
+          class="w-full underline-offset-2 hover:underline lg:w-fit"
+          >Blog</NuxtLink
+        >
+        <NuxtLink
+          to="/contact"
+          class="w-full underline-offset-2 hover:underline lg:w-fit"
+          >Contact</NuxtLink
+        >
         <ButtonPrimary button-text="Free trial"></ButtonPrimary>
       </div>
     </nav>
@@ -37,16 +61,24 @@
 
             <div class="mt-3 grid space-y-3 text-white/60">
               <p>
-                <a class="inline-flex gap-x-2" href="#">About Us</a>
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                  >About Us</a
+                >
               </p>
               <p>
-                <a class="inline-flex gap-x-2" href="#">Why Choose us</a>
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                  >Why Choose us</a
+                >
               </p>
               <p>
-                <a class="inline-flex gap-x-2" href="#">Pricing</a>
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                  >Pricing</a
+                >
               </p>
               <p>
-                <a class="inline-flex gap-x-2" href="#">Testimonial</a>
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                  >Testimonial</a
+                >
               </p>
             </div>
           </div>
@@ -57,22 +89,22 @@
 
             <div class="mt-3 grid space-y-3 text-white/60">
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Privacy Policy</a
                 >
               </p>
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Terms and Conditions</a
                 >
               </p>
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Blog</a
                 >
               </p>
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Contact Us</a
                 >
               </p>
@@ -85,30 +117,30 @@
 
             <div class="mt-3 grid space-y-3 text-white/60">
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Project management</a
                 >
               </p>
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Time tracker</a
                 >
               </p>
               <p>
-                <a class="hover:text-gray-200 inline-flex gap-x-2" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="#"
                   >Time schedule</a
                 >
               </p>
               <p>
                 <a
-                  class="text-gray-400 hover:text-gray-200 inline-flex gap-x-2"
+                  class="text-gray-400 inline-flex gap-x-2 hover:text-white"
                   href="#"
                   >Lead generate</a
                 >
               </p>
               <p>
                 <a
-                  class="text-gray-400 hover:text-gray-200 inline-flex gap-x-2"
+                  class="text-gray-400 inline-flex gap-x-2 hover:text-white"
                   href="#"
                   >Remote collaboration</a
                 >

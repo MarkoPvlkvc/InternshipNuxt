@@ -3,14 +3,16 @@
     <div class="w-vw mx-6 box-content font-roboto text-black sm:mx-10 md:mx-20">
       <div class="flex w-full flex-col items-center">
         <section
-          class="relative mb-32 mt-24 flex w-[75%] flex-col items-center"
+          class="relative mb-20 mt-9 flex w-full flex-col items-center md:mb-24 md:mt-12 md:w-[85%] lg:mb-32 lg:mt-24 lg:w-[75%]"
         >
           <h1
-            class="max-w-3lg mb-8 text-wrap text-center text-6xl font-bold leading-[60px]"
+            class="mb-4 max-w-3xl text-wrap text-center text-3xl font-bold sm:text-4xl md:mb-6 md:text-5xl lg:mb-8 lg:text-6xl lg:leading-[60px]"
           >
             The Best Software to Grow your Sales and Services
           </h1>
-          <p class="mb-12 text-wrap text-center text-lg">
+          <p
+            class="mb-6 max-w-3xl text-wrap text-center text-sm md:mb-9 md:text-base lg:mb-12 lg:text-lg"
+          >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat.
@@ -19,10 +21,10 @@
             placeholder-text="Enter Your Email"
             button-text="Get Free trial"
             :has-padding="true"
-            class="mb-16"
+            class="mb-9 md:mb-12 lg:mb-16"
           />
           <div
-            class="absolute left-[10%] top-[20%] -z-10 hidden size-[450px] rounded-full opacity-40 blur-3xl sm:top-[25%] sm:block md:top-[15%] lg:left-[15%] lg:top-[10%]"
+            class="absolute top-[15%] -z-10 mx-auto size-[250px] rounded-full opacity-40 blur-3xl md:top-[5%] md:size-[350px] md:-translate-x-[100px] lg:size-[450px]"
             style="
               background: linear-gradient(
                 -90deg,
@@ -32,20 +34,23 @@
               );
             "
           ></div>
-          <NuxtImg src="/dashboard.png" alt="Dashboard Image" class="w-full" />
+          <NuxtImg
+            src="/dashboard.png"
+            alt="Dashboard Image"
+            class="w-full max-w-[1024px]"
+          />
         </section>
 
-        <section class="mb-32">
+        <section class="mb-20 md:mb-24 lg:mb-32">
           <p
-            class="mb-6 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-center text-2xl font-bold text-transparent"
+            class="mb-2 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-center text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
           >
             High-quality
           </p>
           <h1
-            class="mb-12 text-wrap text-center text-5xl font-bold leading-[60px]"
+            class="mx-auto mb-6 max-w-3xl text-wrap text-center text-3xl font-bold sm:text-4xl md:mb-9 md:text-5xl lg:mb-12 lg:text-6xl lg:leading-[60px]"
           >
-            We have the Best Solution <br />
-            for your Business
+            We have the Best Solution for your Business
           </h1>
           <FeaturesGrid
             :icons="[
@@ -61,46 +66,56 @@
           />
         </section>
 
-        <section class="mb-32 grid grid-cols-1 gap-20 lg:grid-cols-2">
+        <section
+          class="mb-20 grid max-w-[1280px] grid-cols-1 gap-10 md:mb-24 md:gap-12 lg:mb-32 lg:grid-cols-2 lg:gap-20"
+        >
           <div>
             <p
-              class="mb-6 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-2xl font-bold text-transparent"
+              class="mb-2 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
             >
               Why should you work with us?
             </p>
-            <p class="mb-8 text-5xl font-bold leading-[57px]">
+            <p
+              class="mb-4 text-3xl font-bold sm:text-4xl md:mb-6 md:text-5xl lg:mb-8 lg:text-6xl lg:leading-[57px]"
+            >
               To upscale your business to the next level
             </p>
-            <p>
+            <p class="text-sm md:text-base lg:text-lg">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua invidunt ut labore.
             </p>
           </div>
           <div class="flex flex-col">
-            <p class="mb-8 flex gap-6 text-xl font-medium">
+            <p
+              class="mb-8 flex gap-6 text-base font-medium md:text-lg lg:text-xl"
+            >
               <NuxtImg
                 src="arrowRight.svg"
                 alt="Right Arrow Icon"
-                class="size-12"
+                class="my-auto size-10 lg:size-12"
               />
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod.
             </p>
-            <p class="mb-8 flex gap-6 text-xl font-medium">
+            <p
+              class="mb-8 flex gap-6 text-base font-medium md:text-lg lg:text-xl"
+            >
               <NuxtImg
                 src="arrowRight.svg"
                 alt="Right Arrow Icon"
-                class="size-12"
+                class="my-auto size-10 lg:size-12"
               />
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod.
             </p>
-            <p class="mb-8 flex gap-6 text-xl font-medium">
+            <p
+              class="mb-8 flex gap-6 text-base font-medium md:text-lg lg:text-xl"
+            >
               <NuxtImg
                 src="arrowRight.svg"
                 alt="Right Arrow Icon"
-                class="size-12"
+                class="my-auto size-10 lg:size-12"
               />
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod.
@@ -119,46 +134,75 @@
           rgba(155, 255, 165, 0.25) 100%
         );
       "
-      class="mb-16 grid w-full grid-cols-1 gap-20 px-20 py-16 font-roboto text-black lg:grid-cols-2"
     >
-      <div class="flex flex-col items-center justify-center lg:items-start">
-        <p class="mb-6 text-5xl font-bold">
-          More impressions, more conversions
-        </p>
-        <p class="mb-8">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua invidunt ut labore.
-        </p>
-        <ButtonPrimary button-text="Get Free trial" />
+      <div
+        class="mx-auto mb-16 grid w-full max-w-[1440px] grid-cols-1 gap-12 px-9 py-10 font-roboto text-black md:px-12 md:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-16"
+      >
+        <div class="flex flex-col items-center justify-center lg:items-start">
+          <p
+            class="mb-2 text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6 lg:text-5xl"
+          >
+            More impressions, more conversions
+          </p>
+          <p class="mb-4 text-sm md:mb-6 md:text-base lg:mb-8 lg:text-lg">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua invidunt ut labore.
+          </p>
+          <ButtonPrimary button-text="Get Free trial" />
+        </div>
+        <NuxtImg
+          src="/conversions.png"
+          alt="Conversions Image"
+          class="mx-auto w-full max-w-[550px] lg:mx-0"
+        />
       </div>
-      <NuxtImg
-        src="/conversions.png"
-        alt="Conversions Image"
-        class="mx-auto w-full max-w-[550px] lg:mx-0"
-      />
     </section>
 
     <div class="mx-10 font-roboto text-black md:mx-20">
       <div class="flex w-full flex-col items-center">
         <section
-          class="mb-32 flex w-full flex-wrap justify-center gap-x-[100px] gap-y-9"
+          class="mb-20 flex w-full flex-wrap justify-center gap-x-[100px] gap-y-9 md:mb-24 lg:mb-32"
         >
-          <NuxtImg src="/logoipsum1.svg" alt="Logoipsum 1" class="h-10" />
-          <NuxtImg src="/logoipsum2.svg" alt="Logoipsum 2" class="h-10" />
-          <NuxtImg src="/logoipsum3.svg" alt="Logoipsum 3" class="h-10" />
-          <NuxtImg src="/logoipsum4.svg" alt="Logoipsum 4" class="h-10" />
-          <NuxtImg src="/logoipsum5.svg" alt="Logoipsum 5" class="h-10" />
+          <NuxtImg
+            src="/logoipsum1.svg"
+            alt="Logoipsum 1"
+            class="h-6 md:h-8 lg:h-10"
+          />
+          <NuxtImg
+            src="/logoipsum2.svg"
+            alt="Logoipsum 2"
+            class="h-6 md:h-8 lg:h-10"
+          />
+          <NuxtImg
+            src="/logoipsum3.svg"
+            alt="Logoipsum 3"
+            class="h-6 md:h-8 lg:h-10"
+          />
+          <NuxtImg
+            src="/logoipsum4.svg"
+            alt="Logoipsum 4"
+            class="h-6 md:h-8 lg:h-10"
+          />
+          <NuxtImg
+            src="/logoipsum5.svg"
+            alt="Logoipsum 5"
+            class="h-6 md:h-8 lg:h-10"
+          />
         </section>
 
-        <section class="mb-32 grid grid-cols-1 gap-20 lg:grid-cols-2">
+        <section
+          class="mb-20 grid max-w-[1280px] grid-cols-1 gap-10 md:mb-24 md:gap-12 lg:mb-32 lg:grid-cols-2 lg:gap-20"
+        >
           <div>
             <p
-              class="mb-6 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-2xl font-bold text-transparent"
+              class="mb-2 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
             >
               Discover More
             </p>
-            <p class="mb-8 text-5xl font-bold leading-[57px]">
+            <p
+              class="mb-4 text-3xl font-bold md:mb-6 md:text-4xl lg:mb-8 lg:text-5xl lg:leading-[57px]"
+            >
               Analyze your sales and marketing leads
             </p>
             <p>
@@ -172,40 +216,56 @@
               <NuxtImg
                 src="discoverIcon1.svg"
                 alt="Sales Tracking Image"
-                class="size-[72px]"
+                class="my-auto size-14 lg:size-[72px]"
               />
               <div>
-                <p class="mb-2 text-2xl font-bold">Sales Tracking</p>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                <p class="mb-2 text-lg font-bold md:text-xl lg:text-2xl">
+                  Sales Tracking
+                </p>
+                <p class="text-sm md:text-base lg:text-lg">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                </p>
               </div>
             </div>
             <div class="mb-10 flex gap-8">
               <NuxtImg
                 src="discoverIcon2.svg"
                 alt="Sales Tracking Image"
-                class="size-[72px]"
+                class="my-auto size-14 lg:size-[72px]"
               />
               <div>
-                <p class="mb-2 text-2xl font-bold">Project Management</p>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                <p class="mb-2 text-lg font-bold md:text-xl lg:text-2xl">
+                  Project Management
+                </p>
+                <p class="text-sm md:text-base lg:text-lg">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                </p>
               </div>
             </div>
             <div class="mb-10 flex gap-8">
               <NuxtImg
                 src="discoverIcon3.svg"
                 alt="Sales Tracking Image"
-                class="size-[72px]"
+                class="my-auto size-14 lg:size-[72px]"
               />
               <div>
-                <p class="mb-2 text-2xl font-bold">Activity Report</p>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                <p class="mb-2 text-lg font-bold md:text-xl lg:text-2xl">
+                  Activity Report
+                </p>
+                <p class="text-sm md:text-base lg:text-lg">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="mb-32">
-          <p class="mb-12 text-center text-5xl font-bold">Features</p>
+        <section class="mb-20 md:mb-24 lg:mb-32">
+          <p
+            class="mb-6 text-center text-3xl font-bold md:mb-9 md:text-4xl lg:mb-12 lg:text-5xl"
+          >
+            Features
+          </p>
           <FeaturesGrid
             style="background-color: #f9f0fb"
             :icons="['bi-lock-fill', 'bi-chat-right-text-fill', 'bi-robot']"
@@ -218,16 +278,21 @@
           />
         </section>
 
-        <section class="mb-32">
-          <p class="mb-12 text-center text-5xl font-bold leading-[57px]">
-            The stunning results our <br />
-            customers have experienced
+        <section class="mb-20 md:mb-24 lg:mb-32">
+          <p
+            class="mx-auto mb-6 max-w-3xl text-center text-3xl font-bold md:mb-9 md:text-4xl lg:mb-12 lg:text-5xl lg:leading-[57px]"
+          >
+            The stunning results our customers have experienced
           </p>
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div
+            class="grid max-w-[1280px] grid-cols-1 gap-2 md:gap-4 lg:grid-cols-3 lg:gap-6"
+          >
             <div
-              class="flex flex-col items-center rounded-3xl border-2 border-solid border-[#6199ED42] p-16"
+              class="flex flex-col items-center rounded-3xl border-2 border-solid border-[#6199ED42] p-9 md:p-12 lg:p-16"
             >
-              <p class="mb-6 text-center text-lg font-semibold">
+              <p
+                class="mb-6 text-center font-semibold sm:text-sm md:text-base lg:text-lg"
+              >
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua.
@@ -237,13 +302,17 @@
                 alt="Employee 1"
                 class="mb-3 size-14 rounded-full object-cover"
               />
-              <p class="text-[20px] font-medium">Ron Wood</p>
+              <p class="text-base font-medium md:text-lg lg:text-[20px]">
+                Ron Wood
+              </p>
               <p class="text-xs">CEO</p>
             </div>
             <div
-              class="flex flex-col items-center rounded-3xl border-2 border-solid border-[#6199ED42] p-16"
+              class="flex flex-col items-center rounded-3xl border-2 border-solid border-[#6199ED42] p-9 md:p-12 lg:p-16"
             >
-              <p class="mb-6 text-center text-lg font-semibold">
+              <p
+                class="mb-6 text-center font-semibold sm:text-sm md:text-base lg:text-lg"
+              >
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua.
@@ -253,13 +322,17 @@
                 alt="Employee 2"
                 class="mb-3 size-14 rounded-full object-cover"
               />
-              <p class="text-[20px] font-medium">Mark Mason</p>
+              <p class="text-base font-medium md:text-lg lg:text-[20px]">
+                Mark Mason
+              </p>
               <p class="text-xs">Marketing Manager</p>
             </div>
             <div
-              class="flex flex-col items-center rounded-3xl border-2 border-solid border-[#6199ED42] p-16"
+              class="flex flex-col items-center rounded-3xl border-2 border-solid border-[#6199ED42] p-9 md:p-12 lg:p-16"
             >
-              <p class="mb-6 text-center text-lg font-semibold">
+              <p
+                class="mb-6 text-center font-semibold sm:text-sm md:text-base lg:text-lg"
+              >
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua.
@@ -269,18 +342,25 @@
                 alt="Employee 3"
                 class="mb-3 size-14 rounded-full object-cover"
               />
-              <p class="text-[20px] font-medium">Sam Preston</p>
+              <p class="text-base font-medium md:text-lg lg:text-[20px]">
+                Sam Preston
+              </p>
               <p class="text-xs">CTO</p>
             </div>
           </div>
         </section>
 
-        <section class="relative mb-32 flex flex-col items-center">
-          <p class="mb-6 text-center text-[56px] font-bold leading-[61px]">
-            Are you ready to grow your <br />
-            business with us?
+        <section
+          class="relative mb-20 flex flex-col items-center md:mb-24 lg:mb-32"
+        >
+          <p
+            class="mb-4 max-w-3xl text-center text-4xl font-bold md:text-5xl lg:mb-6 lg:text-[56px] lg:leading-[61px]"
+          >
+            Are you ready to grow your business with us?
           </p>
-          <p class="mb-8">
+          <p
+            class="mb-6 max-w-3xl text-center text-xs md:text-base lg:mb-8 lg:text-lg"
+          >
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy.
           </p>
