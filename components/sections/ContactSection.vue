@@ -25,13 +25,7 @@
               name="full-name"
               type="text"
               placeholder="Full Name"
-              :class="[
-                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
-                {
-                  'border-red-500': v$.fullName.$error,
-                  'border-green-500': !v$.fullName.$invalid,
-                },
-              ]"
+              :class="`rounded-lg border-[3px] border-solid bg-white p-5 text-sm focus:outline-none sm:text-base ${v$.fullName.$error ? 'border-red-500' : v$.fullName.$invalid ? 'border-transparent' : 'border-green-500'}`"
               @change="v$.fullName.$touch"
             />
             <span v-if="v$.fullName.$error" class="text-xs text-red-500">{{
@@ -45,13 +39,7 @@
               name="company-name"
               type="text"
               placeholder="Company Name"
-              :class="[
-                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
-                {
-                  'border-red-500': v$.companyName.$error,
-                  'border-green-500': !v$.companyName.$invalid,
-                },
-              ]"
+              :class="`rounded-lg border-[3px] border-solid bg-white p-5 text-sm focus:outline-none sm:text-base ${v$.companyName.$error ? 'border-red-500' : v$.companyName.$invalid ? 'border-transparent' : 'border-green-500'}`"
               @change="v$.companyName.$touch"
             />
             <span v-if="v$.companyName.$error" class="text-xs text-red-500">{{
@@ -65,13 +53,7 @@
               name="email"
               type="email"
               placeholder="Work Email"
-              :class="[
-                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
-                {
-                  'border-red-500': v$.email.$error,
-                  'border-green-500': !v$.email.$invalid,
-                },
-              ]"
+              :class="`rounded-lg border-[3px] border-solid bg-white p-5 text-sm focus:outline-none sm:text-base ${v$.email.$error ? 'border-red-500' : v$.email.$invalid ? 'border-transparent' : 'border-green-500'}`"
               @change="v$.email.$touch"
             />
             <span v-if="v$.email.$error" class="text-xs text-red-500">{{
@@ -85,13 +67,7 @@
               name="subject"
               type="text"
               placeholder="Subject"
-              :class="[
-                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
-                {
-                  'border-red-500': v$.subject.$error,
-                  'border-green-500': !v$.subject.$invalid,
-                },
-              ]"
+              :class="`rounded-lg border-[3px] border-solid bg-white p-5 text-sm focus:outline-none sm:text-base ${v$.subject.$error ? 'border-red-500' : v$.subject.$invalid ? 'border-transparent' : 'border-green-500'}`"
               @change="v$.subject.$touch"
             />
             <span v-if="v$.subject.$error" class="text-xs text-red-500">{{
@@ -105,13 +81,7 @@
               name="message"
               type="text"
               placeholder="Message"
-              :class="[
-                'rounded-lg border-[3px] border-solid border-transparent bg-white p-5 text-sm focus:outline-none sm:text-base',
-                {
-                  'border-red-500': v$.message.$error,
-                  'border-green-500': !v$.message.$invalid,
-                },
-              ]"
+              :class="`rounded-lg border-[3px] border-solid bg-white p-5 text-sm focus:outline-none sm:text-base ${v$.message.$error ? 'border-red-500' : v$.message.$invalid ? 'border-transparent' : 'border-green-500'}`"
               @change="v$.message.$touch"
             />
             <span v-if="v$.message.$error" class="text-xs text-red-500">{{
@@ -169,6 +139,8 @@
       </div>
     </div>
   </section>
+
+  <MessageSuccessModal :show-modal="isModalOpen" @close="handleClose" />
 </template>
 
 <script setup>
@@ -213,12 +185,17 @@ const rules = computed(() => {
 
 const v$ = useVuelidate(rules, formData);
 
+const isModalOpen = ref(false);
+
 const submitForm = () => {
   v$.value.$validate().then((success) => {
     if (!v$.value.$error) {
-      // Handle form submission
-      alert(success);
+      isModalOpen.value = success;
     }
   });
+};
+
+const handleClose = () => {
+  isModalOpen.value = false;
 };
 </script>

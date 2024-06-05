@@ -1,3 +1,12 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: "Home",
+  ogTitle: "QED Internship Nuxt - Home",
+  description: "First QED Internship Nuxt Site",
+  ogDescription: "First QED Internship Nuxt Site - Home",
+});
+</script>
+
 <template>
   <main>
     <div class="w-vw mx-6 box-content font-roboto text-black sm:mx-10 md:mx-20">
@@ -27,3 +36,7 @@
     </div>
   </main>
 </template>
+
+<script lang="ts">
+export default {};
+</script>
