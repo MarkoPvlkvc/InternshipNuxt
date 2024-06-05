@@ -1,5 +1,5 @@
 <template>
-  <button :class="mergedClasses" :type="type">
+  <button :class="mergedClasses" :type="type" @click="handleClick">
     {{ buttonText }}
   </button>
 </template>
@@ -21,6 +21,10 @@ export default {
       type: String,
       default: "button",
     },
+    clickHandler: {
+      type: Function,
+      default: () => {},
+    },
   },
   computed: {
     mergedClasses() {
@@ -28,6 +32,11 @@ export default {
         "w-fit rounded-xl bg-black px-7 py-3 md:px-10 md:py-4 font-roboto font-bold text-white transition-all hover:bg-[#313852]",
         this.class,
       );
+    },
+  },
+  methods: {
+    handleClick() {
+      this.clickHandler();
     },
   },
 };
