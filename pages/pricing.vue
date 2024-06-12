@@ -8,8 +8,13 @@
   </main>
 </template>
 
-<script>
-export default {};
+<script setup lang="ts">
+useSeoMeta({
+  title: "Pricing",
+  ogTitle: "QED Internship Nuxt - Pricing",
+  description: "First QED Internship Nuxt Site",
+  ogDescription: "First QED Internship Nuxt Site - Pricing",
+});
 </script>
 
 <style lang="scss" scoped></style>
