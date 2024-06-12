@@ -3,8 +3,9 @@
     class="flex flex-col items-center rounded-3xl border-solid bg-white"
     :style="`${isRecommended ? 'border: solid #6b7cff 4px;' : 'border: solid #D8D8D8 1px'}`"
   >
-    <div class="flex items-center gap-6 p-12 pb-0">
+    <div class="flex items-center gap-6 p-6 pb-0 md:p-9 lg:p-12">
       <svg
+        class="size-10 md:size-14"
         width="54"
         height="54"
         viewBox="0 0 54 54"
@@ -18,14 +19,14 @@
       </svg>
 
       <div>
-        <p class="text-4xl font-bold">{{ title }}</p>
+        <p class="text-2xl font-bold md:text-3xl lg:text-4xl">{{ title }}</p>
         <p>{{ description }}</p>
       </div>
     </div>
 
-    <div class="my-8 h-[1px] w-full bg-[#D8D8D8]"></div>
+    <div class="my-6 h-[1px] w-full bg-[#D8D8D8] md:my-8"></div>
 
-    <div class="flex w-full flex-col gap-6 px-12">
+    <div class="flex w-full flex-col gap-6 px-6 md:px-9 lg:px-12">
       <div class="flex gap-4">
         <svg
           width="24"
@@ -132,15 +133,17 @@
       </div>
     </div>
 
-    <p class="mt-8 max-w-96 px-12 text-center text-sm">
+    <p class="mt-6 max-w-96 px-12 text-center text-sm md:mt-8">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
     </p>
-    <p class="mt-12 text-center text-4xl font-bold">
+    <p
+      class="mt-9 text-center text-2xl font-bold md:mt-12 md:text-3xl lg:text-4xl"
+    >
       {{ monthlySelected ? priceMonthly : priceYearly }}
     </p>
     <p class="text-xs text-black/75">For Limited Period</p>
 
-    <ButtonPrimary button-text="Get started" class="mb-12 mt-6" />
+    <ButtonPrimary button-text="Get started" class="mb-9 mt-6 md:mb-12" />
   </div>
 </template>
 

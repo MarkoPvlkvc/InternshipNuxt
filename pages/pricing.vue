@@ -1,69 +1,15 @@
 <template>
-  <section class="mt-24 flex flex-col items-center">
-    <p class="max-w-lg text-center text-6xl font-bold">
-      Pricing plans that suit you
-    </p>
-    <p class="mt-6 max-w-sm text-center text-lg">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor.
-    </p>
-    <div class="mt-6 flex rounded-[20px] bg-gray p-2">
-      <ButtonPrimary
-        button-text="Monthly"
-        :click-handler="
-          () => {
-            monthlySelected = true;
-          }
-        "
-        :class="`${monthlySelected ? '' : 'bg-transparent text-black hover:bg-black/15'}`"
-      />
-      <ButtonPrimary
-        button-text="Yearly"
-        :click-handler="
-          () => {
-            monthlySelected = false;
-          }
-        "
-        :class="`${monthlySelected ? 'bg-transparent text-black hover:bg-black/15' : ''}`"
-      />
-    </div>
-    <div class="mt-12 flex justify-center gap-6">
-      <PricingCard
-        title="Regular"
-        description="Starter Plan"
-        price-monthly="Free"
-        price-yearly="Free"
-        :monthly-selected="monthlySelected"
-      />
+  <main class="flex flex-col items-center">
+    <PricingSection />
 
-      <PricingCard
-        title="Platinum"
-        description="For the best results"
-        price-monthly="$342"
-        price-yearly="$4000"
-        :monthly-selected="monthlySelected"
-        :is-recommended="true"
-      />
+    <FAQSection />
 
-      <PricingCard
-        title="Standard"
-        description="Most popular"
-        price-monthly="$234"
-        price-yearly="$2700"
-        :monthly-selected="monthlySelected"
-      />
-    </div>
-  </section>
+    <CTASection class="mx-8 mt-16 md:mt-24 lg:mt-32" />
+  </main>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      monthlySelected: true,
-    };
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped></style>
