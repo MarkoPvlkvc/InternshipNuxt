@@ -1,7 +1,7 @@
 <template>
-  <section class="mb-20 md:mb-24 lg:mb-32">
+  <section class="mb-20 flex flex-col items-center md:mb-24 lg:mb-32">
     <p
-      class="mb-2 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-center text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
+      class="mb-2 w-fit bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-center text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
     >
       High-quality
     </p>

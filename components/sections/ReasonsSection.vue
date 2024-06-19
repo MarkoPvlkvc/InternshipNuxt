@@ -4,7 +4,7 @@
   >
     <div>
       <p
-        class="mb-2 bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
+        class="mb-2 w-fit bg-gradient-to-r from-gradient_blue_1 to-gradient_blue_2 bg-clip-text text-lg font-bold text-transparent md:mb-4 md:text-xl lg:mb-6 lg:text-2xl"
       >
         Why should you work with us?
       </p>

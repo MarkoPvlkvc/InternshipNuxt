@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
+  runtimeConfig: {
+    public: {
+      strapiApiKey: process.env.STRAPI_API_KEY,
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
