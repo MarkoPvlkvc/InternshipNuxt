@@ -3,85 +3,82 @@
     <p
       class="max-w-3xl px-6 text-center text-3xl font-bold md:text-4xl lg:text-5xl"
     >
-      {{ blog?.title }}
+      {{ post?.title }}
     </p>
     <p class="mt-4 font-medium text-[#6D6E76] md:mt-6">
-      {{ blog?.author }} | {{ formatDate(blog?.date!) }}
+      {{ post?.author }} | {{ formatDate(post?.date!) }}
     </p>
 
     <div
       class="mt-12 h-[512px] w-full max-w-screen-xl overflow-hidden rounded-3xl px-6 md:mt-16 md:px-12 lg:px-20"
     >
       <img
-        :src="`http://localhost:1337${blog?.imageUrl}`"
+        :src="`http://localhost:1337${post?.imageUrl}`"
+        :alt="post?.imageAlt"
         class="h-full w-full rounded-3xl object-cover"
       />
     </div>
 
-    <p class="mt-12 max-w-3xl px-6 md:mt-16">
-      {{ blog?.content }}
-    </p>
+    <div
+      class="prose mt-12 max-w-3xl px-6 md:mt-16"
+      v-html="sanitizedContent"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
-import axios from "axios";
+import DOMPurify from "dompurify";
+import type { ClassDictionary } from "clsx";
 
-interface Blog {
+interface BlogPost {
   id: number;
   title: string;
   content: string;
   author: string;
   date: string;
   imageUrl: string;
+  imageAlt: string;
 }
 
-const blog = ref<Blog | null>(null);
+const post = ref<BlogPost | null>(null);
 
 const route = useRoute();
+const postId = route.params.id;
 const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
+const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 
-const fetchBlogDetails = async (id: string) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:1337/api/blog-posts/${id}?populate=*`,
-      {
-        headers: {
-          Authorization: `Bearer ${strapiApiKey}`,
-        },
-      },
-    );
-    const blogData = response.data.data;
-    blog.value = {
-      id: blogData.id,
-      title: blogData.attributes.Title,
-      content: blogData.attributes.Content,
-      author: blogData.attributes.Author,
-      date: new Date(blogData.attributes.Date).toLocaleDateString(),
-      imageUrl: blogData.attributes.Image.data.attributes.url,
-    };
-  } catch (error) {
-    console.error("Error fetching blog details:", error);
-  }
-};
-
-onMounted(() => {
-  const { id } = route.params;
-  fetchBlogDetails(id.toString());
+const sanitizedContent = computed(() => {
+  return post.value ? DOMPurify.sanitize(post.value.content) : "";
 });
 
-const formatDate = (dateString: string) => {
-  if (!dateString) return;
+const { data, error } = await useFetch(
+  `${strapiApiUrl}/blog-posts/${postId}?populate=*`,
+  {
+    headers: {
+      Authorization: `Bearer ${strapiApiKey}`,
+    },
+  },
+);
 
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+// Handle the response and map it to the Post interface
+if (data.value) {
+  const postData = (data.value as ClassDictionary).data;
+  post.value = {
+    id: postData.id,
+    title: postData.attributes.Title,
+    content: postData.attributes.Content,
+    author: postData.attributes.Author.data.attributes.FullName,
+    date: new Date(postData.attributes.Date).toLocaleDateString(),
+    imageUrl: postData.attributes.Image.data.attributes.url,
+    imageAlt: postData.attributes.ImageAlt,
   };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
+}
+
+if (error.value) {
+  console.error("Error fetching post details:", error.value);
+}
 
 useSeoMeta({
   title: "Blog Post",

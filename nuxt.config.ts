@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   runtimeConfig: {
     public: {
+      strapiApiUrl: process.env.STRAPI_API_URL,
       strapiApiKey: process.env.STRAPI_API_KEY,
     },
   },
