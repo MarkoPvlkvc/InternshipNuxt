@@ -61,8 +61,6 @@ const { data, error } = await useFetch(
   },
 );
 
-console.log(data.value);
-
 if (data.value) {
   const postData = (data.value as ClassDictionary).data[0];
   post.value = {

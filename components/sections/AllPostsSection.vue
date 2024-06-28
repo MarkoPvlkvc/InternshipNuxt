@@ -35,7 +35,7 @@ const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 
 const route = useRoute();
 const pageCount = ref(0);
-const page = ref(route.query.page as string);
+const page = ref((route.query.page as string) || "1");
 
 const posts = ref<BlogPost[]>([]);
 

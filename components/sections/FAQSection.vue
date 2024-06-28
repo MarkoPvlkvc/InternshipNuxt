@@ -14,7 +14,7 @@
 
     <div class="flex flex-col gap-4">
       <div
-        v-for="(item, index) in dropdowns"
+        v-for="(item, index) in faqs"
         :key="index"
         v-auto-animate
         class="flex w-[500px] flex-col items-center justify-center rounded-3xl bg-white p-5 hover:cursor-pointer max-[900px]:w-full md:p-8 lg:w-[600px] lg:p-10"
@@ -35,39 +35,46 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { vAutoAnimate } from "@formkit/auto-animate";
+import type { ClassDictionary } from "clsx";
 
-const dropdowns = ref([
-  {
-    question: "How do I grow my business?",
-    answer:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    show: true,
-  },
-  {
-    question: "Can I cancel my subscription?",
-    answer:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    show: false,
-  },
-  {
-    question: "How do I contact the support?",
-    answer:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    show: false,
-  },
-  {
-    question: "Is a credit card required?",
-    answer:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    show: false,
-  },
-]);
+interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+  show: boolean;
+}
 
-const toggleDropdown = (index) => {
-  dropdowns.value.forEach((dropdown, i) => {
+const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
+const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
+
+const faqs = ref<Faq[]>([]);
+
+const { data, error } = await useFetch(`${strapiApiUrl}/api/faqs`, {
+  headers: {
+    Authorization: `Bearer ${strapiApiKey}`,
+  },
+});
+
+if (data.value) {
+  const faqData = (data.value as ClassDictionary).data;
+
+  faqs.value = faqData.map((faq: ClassDictionary) => ({
+    id: faq.id,
+    question: faq.attributes.Question,
+    answer: faq.attributes.Answer,
+    show: false,
+  }));
+}
+
+if (error.value) {
+  console.error("Error fetching all posts:", error.value);
+}
+
+const toggleDropdown = (index: number) => {
+  faqs.value.forEach((dropdown, i) => {
     dropdown.show = i === index ? true : false;
   });
 };

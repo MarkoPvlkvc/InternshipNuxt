@@ -7,3 +7,12 @@ export interface BlogPost {
   imageUrl: string;
   imageAlt: string;
 }
+
+export interface Review {
+  id: number;
+  comment: string;
+  imageUrl: string;
+  imageAlt: string;
+  fullName: string;
+  position: string;
+}
