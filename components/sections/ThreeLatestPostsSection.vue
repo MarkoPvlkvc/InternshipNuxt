@@ -7,7 +7,9 @@
     <div
       class="mx-6 mt-9 grid max-w-7xl grid-cols-1 gap-x-6 gap-y-16 md:mx-12 md:mt-12 md:grid-cols-2 lg:mx-20 lg:mt-16 lg:grid-cols-3"
     >
-      <BlogPostItem :posts="posts" />
+      <template v-for="post in posts" :key="post.id">
+        <BlogPostItem v-bind="post" />
+      </template>
     </div>
   </section>
 </template>
@@ -15,16 +17,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { ClassDictionary } from "clsx";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  date: string;
-  imageUrl: string;
-  imageAlt: string;
-}
+import type { BlogPost } from "@/interfaces/interfaces";
 
 const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
 const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
@@ -32,7 +25,7 @@ const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 const posts = ref<BlogPost[]>([]);
 
 const { data, error } = await useFetch(
-  `${strapiApiUrl}/blog-posts?populate=*&sort=createdAt:desc&pagination[pageSize]=3`,
+  `${strapiApiUrl}/api/blog-posts?populate=*&sort=createdAt:desc&pagination[pageSize]=3`,
   {
     headers: {
       Authorization: `Bearer ${strapiApiKey}`,
@@ -48,7 +41,7 @@ if (data.value) {
     title: post.attributes.Title,
     content: extractFirstParagraph(post.attributes.Content),
     author: post.attributes.Author.data.attributes.FullName,
-    date: new Date(post.attributes.Date).toLocaleDateString(),
+    date: new Date(post.attributes.Date),
     imageUrl: post.attributes.Image.data.attributes.url,
   }));
 }

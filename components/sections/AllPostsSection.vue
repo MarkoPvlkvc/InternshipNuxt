@@ -7,7 +7,9 @@
     <div
       class="mx-6 mt-9 grid max-w-7xl grid-cols-1 gap-x-6 gap-y-16 md:mx-12 md:mt-12 md:grid-cols-2 lg:mx-20 lg:mt-16 lg:grid-cols-3"
     >
-      <BlogPostItem :posts="posts" />
+      <template v-for="post in posts" :key="post.id">
+        <BlogPostItem v-bind="post" />
+      </template>
     </div>
 
     <div class="mx-auto mt-16 flex w-fit gap-2">
@@ -26,22 +28,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { ClassDictionary } from "clsx";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  date: string;
-  imageUrl: string;
-  imageAlt: string;
-}
+import type { BlogPost } from "@/interfaces/interfaces";
 
 const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
 const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 
 const route = useRoute();
-const pageCount = ref();
+const pageCount = ref(0);
 const page = ref(route.query.page as string);
 
 const posts = ref<BlogPost[]>([]);
@@ -53,20 +46,12 @@ const navigateToPage = (pageNumber: number) => {
   });
 };
 
-watch(
-  () => route.query.page,
-  (newPage) => {
-    page.value = (newPage as string) || "1";
-    fetchAllPosts();
-  },
-);
-
-const fetchAllPosts = async () => {
+const fetchAllPosts = async (pageValue: string) => {
   const { data, error } = await useFetch(
-    `${strapiApiUrl}/blog-posts?pagination[page]=${page.value}&pagination[pageSize]=3&populate=*`,
+    `${strapiApiUrl}/api/blog-posts?pagination[page]=${pageValue}&pagination[pageSize]=3&populate=*`,
     {
       headers: {
-        Authorization: `bearer ${strapiApiKey}`,
+        Authorization: `Bearer ${strapiApiKey}`,
       },
     },
   );
@@ -80,7 +65,7 @@ const fetchAllPosts = async () => {
       title: post.attributes.Title,
       content: extractFirstParagraph(post.attributes.Content),
       author: post.attributes.Author.data.attributes.FullName,
-      date: new Date(post.attributes.Date).toLocaleDateString(),
+      date: new Date(post.attributes.Date),
       imageUrl: post.attributes.Image.data.attributes.url,
       imageAlt: post.attributes.ImageAlt,
     }));
@@ -91,14 +76,17 @@ const fetchAllPosts = async () => {
   }
 };
 
-fetchAllPosts();
+watch(
+  () => route.query.page,
+  (newPage) => {
+    if ((newPage as string) != page.value) {
+      page.value = (newPage as string) || "1";
+      fetchAllPosts(page.value);
+    }
+  },
+);
 
-useSeoMeta({
-  title: "Blog",
-  ogTitle: "QED Internship Nuxt - Blog",
-  description: "First QED Internship Nuxt Site",
-  ogDescription: "First QED Internship Nuxt Site - Blog",
-});
+fetchAllPosts(page.value);
 </script>
 
 <style lang="scss" scoped></style>

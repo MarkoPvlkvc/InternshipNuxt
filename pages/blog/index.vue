@@ -19,6 +19,13 @@ definePageMeta({
     },
   ],
 });
+
+useSeoMeta({
+  title: "Blog",
+  ogTitle: "QED Internship Nuxt - Blog",
+  description: "First QED Internship Nuxt Site",
+  ogDescription: "First QED Internship Nuxt Site - Blog",
+});
 </script>
 
 <style lang="scss" scoped></style>

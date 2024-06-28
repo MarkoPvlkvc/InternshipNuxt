@@ -13,7 +13,7 @@
       class="mt-12 h-[512px] w-full max-w-screen-xl overflow-hidden rounded-3xl px-6 md:mt-16 md:px-12 lg:px-20"
     >
       <img
-        :src="`http://localhost:1337${post?.imageUrl}`"
+        :src="`${strapiApiUrl}${post?.imageUrl}`"
         :alt="post?.imageAlt"
         class="h-full w-full rounded-3xl object-cover"
       />
@@ -31,16 +31,7 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 import DOMPurify from "dompurify";
 import type { ClassDictionary } from "clsx";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  date: string;
-  imageUrl: string;
-  imageAlt: string;
-}
+import type { BlogPost } from "@/interfaces/interfaces";
 
 const post = ref<BlogPost | null>(null);
 
@@ -54,7 +45,7 @@ const sanitizedContent = computed(() => {
 });
 
 const { data, error } = await useFetch(
-  `${strapiApiUrl}/blog-posts/${postId}?populate=*`,
+  `${strapiApiUrl}/api/blog-posts/${postId}?populate=*`,
   {
     headers: {
       Authorization: `Bearer ${strapiApiKey}`,
@@ -70,7 +61,7 @@ if (data.value) {
     title: postData.attributes.Title,
     content: postData.attributes.Content,
     author: postData.attributes.Author.data.attributes.FullName,
-    date: new Date(postData.attributes.Date).toLocaleDateString(),
+    date: new Date(postData.attributes.Date),
     imageUrl: postData.attributes.Image.data.attributes.url,
     imageAlt: postData.attributes.ImageAlt,
   };
