@@ -8,11 +8,11 @@
       >
         Discover More
       </p>
-      <p
+      <h2
         class="mb-4 text-3xl font-bold md:mb-6 md:text-4xl lg:mb-8 lg:text-5xl lg:leading-[57px]"
       >
         Analyze your sales and marketing leads
-      </p>
+      </h2>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

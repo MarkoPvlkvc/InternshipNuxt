@@ -8,11 +8,11 @@
       >
         Why should you work with us?
       </p>
-      <p
+      <h2
         class="mb-4 text-3xl font-bold sm:text-4xl md:mb-6 md:text-5xl lg:mb-8 lg:text-6xl lg:leading-[57px]"
       >
         To upscale your business to the next level
-      </p>
+      </h2>
       <p class="text-sm md:text-base lg:text-lg">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

@@ -9,11 +9,11 @@
       class="grid w-full grid-cols-1 gap-16 rounded-3xl bg-[#f0f2fe] p-9 md:gap-24 md:p-12 lg:grid-cols-2 lg:gap-36 lg:p-16"
     >
       <div>
-        <p
+        <h2
           class="mb-2 text-2xl font-bold md:mb-3 md:text-3xl lg:mb-4 lg:text-4xl"
         >
           Drop us a message
-        </p>
+        </h2>
         <p class="mb-6 text-sm md:mb-9 md:text-base lg:mb-12 lg:text-lg">
           We will get back to you as soon as possible.
         </p>

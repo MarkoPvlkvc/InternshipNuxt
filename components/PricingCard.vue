@@ -19,7 +19,7 @@
       </svg>
 
       <div>
-        <p class="text-2xl font-bold md:text-3xl lg:text-4xl">{{ title }}</p>
+        <h2 class="text-2xl font-bold md:text-3xl lg:text-4xl">{{ title }}</h2>
         <p>{{ description }}</p>
       </div>
     </div>

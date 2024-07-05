@@ -1,8 +1,8 @@
 <template>
   <section class="mt-16 md:mt-24 lg:mt-32">
-    <p class="text-center text-4xl font-bold md:text-5xl lg:text-6xl">
+    <h2 class="text-center text-4xl font-bold md:text-5xl lg:text-6xl">
       All posts
-    </p>
+    </h2>
 
     <div
       class="mx-6 mt-9 grid max-w-7xl grid-cols-1 gap-x-6 gap-y-16 md:mx-12 md:mt-12 md:grid-cols-2 lg:mx-20 lg:mt-16 lg:grid-cols-3"
@@ -32,12 +32,11 @@ import type { BlogPost } from "@/interfaces/interfaces";
 
 const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
 const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
+const fallbackImage = "/uploads/fallback_blog_image_d67d69f3e1.png";
 
 const route = useRoute();
 const pageCount = ref(0);
 const page = ref((route.query.page as string) || "1");
-
-const posts = ref<BlogPost[]>([]);
 
 const navigateToPage = (pageNumber: number) => {
   navigateTo({
@@ -46,47 +45,46 @@ const navigateToPage = (pageNumber: number) => {
   });
 };
 
-const fetchAllPosts = async (pageValue: string) => {
-  const { data, error } = await useFetch(
-    `${strapiApiUrl}/api/blog-posts?pagination[page]=${pageValue}&pagination[pageSize]=3&populate=*`,
-    {
-      headers: {
-        Authorization: `Bearer ${strapiApiKey}`,
-      },
-    },
-  );
+const { data } = useFetch(`${strapiApiUrl}/api/blog-posts?`, {
+  query: {
+    populate: "*",
+    "pagination[page]": page,
+    "pagination[pageSize]": "3",
+  },
+  headers: {
+    Authorization: `Bearer ${strapiApiKey}`,
+  },
+});
 
+const posts = computed<BlogPost[]>(() => {
   if (data.value) {
     const postData = (data.value as ClassDictionary).data;
-    pageCount.value = (data.value as ClassDictionary).meta.pagination.pageCount;
 
-    posts.value = postData.map((post: ClassDictionary) => ({
+    const allPosts = postData.map((post: ClassDictionary) => ({
       id: post.id,
       title: post.attributes.Title,
       content: extractFirstParagraph(post.attributes.Content),
       author: post.attributes.Author.data.attributes.FullName,
       date: new Date(post.attributes.Date),
-      imageUrl: post.attributes.Image.data.attributes.url,
+      imageUrl: post.attributes.Image.data?.attributes.url || fallbackImage,
       imageAlt: post.attributes.ImageAlt,
     }));
+
+    return allPosts;
+  } else {
+    return [];
   }
+});
 
-  if (error.value) {
-    console.error("Error fetching all posts:", error.value);
+watchEffect(() => {
+  if (data.value) {
+    pageCount.value = (data.value as ClassDictionary).meta.pagination.pageCount;
   }
-};
+});
 
-watch(
-  () => route.query.page,
-  (newPage) => {
-    if ((newPage as string) != page.value) {
-      page.value = (newPage as string) || "1";
-      fetchAllPosts(page.value);
-    }
-  },
-);
-
-fetchAllPosts(page.value);
+watchEffect(() => {
+  page.value = (route.query.page as string) || "1";
+});
 </script>
 
 <style lang="scss" scoped></style>

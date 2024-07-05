@@ -1,8 +1,8 @@
 <template>
   <section class="mt-12 flex flex-col items-center md:mt-16 lg:mt-24">
-    <p class="mx-6 text-center text-4xl font-bold md:text-5xl lg:text-6xl">
+    <h1 class="mx-6 text-center text-4xl font-bold md:text-5xl lg:text-6xl">
       Read our latest blogs
-    </p>
+    </h1>
     <p
       class="mx-6 mt-6 max-w-3xl text-center text-sm md:mx-12 md:text-base lg:mx-20 lg:text-lg"
     >
@@ -70,7 +70,7 @@ if (data.value) {
     author: postData.attributes.Author.data.attributes.FullName,
     date: new Date(postData.attributes.Date),
     imageUrl: postData.attributes.Image.data.attributes.url,
-    imageAlt: postData.attributes.ImageAlt,
+    imageAlt: postData.attributes.Image.data.attributes.alternativeText,
   };
 }
 

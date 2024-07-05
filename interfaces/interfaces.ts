@@ -16,3 +16,11 @@ export interface Review {
   fullName: string;
   position: string;
 }
+
+export interface Employee {
+  id: number;
+  imageUrl: string;
+  imageAlt: string;
+  fullName: string;
+  position: string;
+}

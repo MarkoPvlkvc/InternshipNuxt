@@ -8,3 +8,9 @@
 body {
   overflow-x: hidden;
 }
+
+.swiper-slide {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}

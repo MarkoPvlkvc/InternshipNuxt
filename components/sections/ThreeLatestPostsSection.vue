@@ -43,6 +43,7 @@ if (data.value) {
     author: post.attributes.Author.data.attributes.FullName,
     date: new Date(post.attributes.Date),
     imageUrl: post.attributes.Image.data.attributes.url,
+    imageAlt: post.attributes.Image.data.attributes.alternativeText,
   }));
 }
 

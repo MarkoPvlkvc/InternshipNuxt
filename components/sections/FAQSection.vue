@@ -3,9 +3,9 @@
     class="mx-6 mt-16 grid max-w-7xl grid-cols-[1fr_auto] gap-8 rounded-3xl bg-[#f0f2fe] p-6 max-[900px]:grid-cols-1 sm:p-9 md:mt-24 md:p-12 lg:mt-32 lg:p-16"
   >
     <div>
-      <p class="text-3xl font-bold md:text-4xl lg:text-5xl">
+      <h2 class="text-3xl font-bold md:text-4xl lg:text-5xl">
         Frequently Asked Questions
-      </p>
+      </h2>
       <p class="mt-7">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt.
@@ -24,8 +24,11 @@
           <p class="text-lg font-bold md:text-xl lg:text-2xl">
             {{ item.question }}
           </p>
-          <img v-if="!item.show" src="/plusIcon.svg" class="size-5" />
-          <img v-if="item.show" src="/minusIcon.svg" class="size-5" />
+          <img
+            :src="item.show ? '/minusIcon.svg' : '/plusIcon.svg'"
+            :alt="item.show ? 'Minus Icon' : 'Plus Icon'"
+            class="size-5"
+          />
         </div>
         <p v-if="item.show" class="mt-4 max-w-xl max-[900px]:max-w-none">
           {{ item.answer }}

@@ -13,6 +13,8 @@ useSeoMeta({
       <div class="flex w-full flex-col items-center">
         <ContactSection />
 
+        <GoogleMap />
+
         <CTASection />
       </div>
     </div>

@@ -1,8 +1,8 @@
 <template>
   <section class="mt-12 flex flex-col items-center md:mt-16 lg:mt-24">
-    <p class="max-w-lg text-center text-4xl font-bold md:text-5xl lg:text-6xl">
+    <h1 class="max-w-lg text-center text-4xl font-bold md:text-5xl lg:text-6xl">
       Pricing plans that suit you
-    </p>
+    </h1>
     <p class="mt-6 max-w-sm text-center text-base md:text-lg">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor.

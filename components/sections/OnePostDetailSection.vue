@@ -1,10 +1,10 @@
 <template>
   <section class="mt-12 flex w-full flex-col items-center md:mt-16 lg:mt-24">
-    <p
+    <h1
       class="max-w-3xl px-6 text-center text-3xl font-bold md:text-4xl lg:text-5xl"
     >
       {{ post?.title }}
-    </p>
+    </h1>
     <p class="mt-4 font-medium text-[#6D6E76] md:mt-6">
       {{ post?.author }} | {{ formatDate(post?.date!) }}
     </p>
@@ -63,7 +63,7 @@ if (data.value) {
     author: postData.attributes.Author.data.attributes.FullName,
     date: new Date(postData.attributes.Date),
     imageUrl: postData.attributes.Image.data.attributes.url,
-    imageAlt: postData.attributes.ImageAlt,
+    imageAlt: postData.attributes.Image.data.attributes.alternativeText,
   };
 }
 

@@ -10,11 +10,11 @@
         class="h-full w-full object-cover transition-all group-hover:scale-105"
       />
     </div>
-    <p
+    <h3
       class="mt-4 text-lg font-bold group-hover:underline md:mt-8 md:text-xl lg:text-2xl"
     >
       {{ props.title }}
-    </p>
+    </h3>
     <p class="mt-3 md:mt-4">
       {{ shortenContent(props.content) }}
     </p>

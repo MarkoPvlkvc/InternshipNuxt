@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     public: {
       strapiApiUrl: process.env.STRAPI_API_URL,
       strapiApiKey: process.env.STRAPI_API_KEY,
+      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
     },
   },
   postcss: {

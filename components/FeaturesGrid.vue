@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="grid w-full max-w-[1280px] grid-cols-1 gap-8 rounded-3xl bg-gray p-9 text-black md:p-12 lg:grid-cols-3 lg:p-16"
-  >
+  <div :class="classes">
     <template v-for="(icon, index) in icons" :key="index">
       <div class="relative">
         <div class="row-span-3 grid-rows-subgrid">
@@ -29,6 +27,8 @@
 </template>
 
 <script>
+import { cn } from "~/lib/utils";
+
 export default {
   props: {
     icons: {
@@ -42,6 +42,18 @@ export default {
     hasDivider: {
       type: Boolean,
       default: false,
+    },
+    class: {
+      type: String,
+      default: "",
+    },
+  },
+  computed: {
+    classes() {
+      return cn(
+        "grid w-full max-w-[1280px] grid-cols-1 gap-x-8 gap-y-12 md:gap-y-16 rounded-3xl bg-gray p-9 text-black md:p-12 lg:grid-cols-3 lg:p-16",
+        this.class,
+      );
     },
   },
 };
