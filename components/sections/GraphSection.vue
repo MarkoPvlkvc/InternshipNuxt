@@ -26,7 +26,7 @@
         <ButtonPrimary button-text="Get Free trial" />
       </div>
       <NuxtImg
-        src="/conversions.png"
+        src="/conversions2.png"
         alt="Conversions Image"
         class="mx-auto w-full max-w-[550px] lg:mx-0"
       />
