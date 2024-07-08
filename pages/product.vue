@@ -152,8 +152,13 @@
   </main>
 </template>
 
-<script>
-export default {};
+<script setup lang="ts">
+useSeoMeta({
+  title: "Product",
+  ogTitle: "QED Internship Nuxt - Product",
+  description: "First QED Internship Nuxt Site",
+  ogDescription: "First QED Internship Nuxt Site - Product",
+});
 </script>
 
 <style lang="scss" scoped></style>
