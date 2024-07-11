@@ -1,5 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  generate: {
+    routes: [
+      "/", // Add your routes here
+      "/about_us",
+      "/blog",
+      "/contact",
+      "/pricing",
+      "/product",
+    ],
+  },
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   runtimeConfig: {

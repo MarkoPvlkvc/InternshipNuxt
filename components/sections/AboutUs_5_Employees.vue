@@ -3,11 +3,7 @@
     class="mb-16 mt-16 flex flex-col items-center gap-8 px-4 md:mb-24 md:mt-24 lg:mb-32 lg:mt-32 xl:flex-row xl:items-start xl:justify-center"
   >
     <div>
-      <h2
-        class="text-center text-3xl font-bold md:text-4xl lg:text-5xl xl:text-start"
-      >
-        Our talented team
-      </h2>
+      <h2 class="heading-2 text-center xl:text-start">Our talented team</h2>
       <p
         class="mt-4 max-w-96 text-center text-sm md:mt-5 md:text-base lg:mt-6 xl:text-start"
       >
@@ -17,8 +13,15 @@
     </div>
 
     <div class="grid w-fit grid-cols-2 gap-6 max-[450px]:gap-3 sm:grid-cols-3">
-      <template v-for="employee in employees" :key="employee.id">
-        <EmployeeItem v-bind="employee" />
+      <template v-if="status === 'pending' || status === 'error'">
+        <EmployeeItemSkeleton v-for="i in 6" :key="i" />
+      </template>
+      <template v-else>
+        <EmployeeItem
+          v-for="employee in employees"
+          :key="employee.id"
+          v-bind="employee"
+        />
       </template>
     </div>
   </section>
@@ -34,13 +37,12 @@ const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 
 const employees = ref<Employee[]>([]);
 
-const { data, error } = await useFetch(
-  `${strapiApiUrl}/api/employees?populate=*`,
-  {
+const { status, data, error } = await useLazyAsyncData("employees", () =>
+  $fetch(`${strapiApiUrl}/api/employees?populate=*`, {
     headers: {
       Authorization: `Bearer ${strapiApiKey}`,
     },
-  },
+  }),
 );
 
 if (data.value) {

@@ -3,7 +3,7 @@
     class="mt-16 flex w-full flex-col items-center bg-gradient-to-r from-[#def8ed] via-[#cfe9f4] to-[#e9effb] md:mt-24 lg:mt-32"
   >
     <h2
-      class="mx-auto mt-16 max-w-3xl px-6 text-center text-3xl font-bold sm:px-10 md:mt-24 md:px-20 md:text-4xl lg:mt-32 lg:text-5xl"
+      class="heading-2 mx-auto mt-16 max-w-3xl px-6 text-center sm:px-10 md:mt-24 md:px-20 lg:mt-32"
     >
       Get the best out of your company with our service
     </h2>

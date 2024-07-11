@@ -5,8 +5,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .heading-1 {
+    @apply text-4xl font-bold leading-[1.1] md:text-5xl lg:text-6xl;
+  }
+  .heading-2 {
+    @apply text-3xl font-bold leading-[1.2] md:text-4xl lg:text-5xl;
+  }
+  .heading-3 {
+    @apply text-2xl font-bold leading-[1.2] md:text-3xl lg:text-4xl;
+  }
+  .heading-4 {
+    @apply text-xl font-bold leading-[1.4] md:text-2xl lg:text-3xl;
+  }
+  .heading-5 {
+    @apply text-lg font-bold leading-[1.5] md:text-xl lg:text-2xl;
+  }
+  .heading-6 {
+    @apply text-base font-bold leading-[1.5] md:text-lg lg:text-xl;
+  }
+}
+
 body {
   overflow-x: hidden;
+}
+
+h2 {
+  font:
+    700 48px "Roboto",
+    sans-serif;
+  line-height: 120%;
+}
+
+h3 {
+  font:
+    700 36px "Roboto",
+    sans-serif;
+  line-height: 130%;
+}
+
+h4 {
+  font:
+    700 24px "Roboto",
+    sans-serif;
+  line-height: 140%;
+}
+
+h5 {
+  font:
+    700 18px "Roboto",
+    sans-serif;
+  line-height: 150%;
+}
+
+h6 {
+  font:
+    700 16px "Roboto",
+    sans-serif;
+  line-height: 150%;
 }
 
 .swiper-slide {

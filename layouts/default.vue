@@ -6,7 +6,7 @@
       <p
         class="mb-6 mt-2.5 flex justify-between font-roboto text-xl font-bold md:text-2xl lg:my-0 lg:text-3xl"
       >
-        {Finsweet
+        <NuxtLink href="/"> {Finsweet </NuxtLink>
         <button @click="toggleMenu">
           <i class="bi bi-list block lg:hidden"></i>
         </button>
@@ -61,7 +61,7 @@
 
             <div class="mt-3 grid space-y-3 text-white/60">
               <p>
-                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="about_us"
                   >About Us</a
                 >
               </p>
@@ -71,12 +71,14 @@
                 >
               </p>
               <p>
-                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="pricing"
                   >Pricing</a
                 >
               </p>
               <p>
-                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                <a
+                  class="inline-flex gap-x-2 hover:text-white"
+                  href="/#feedback"
                   >Testimonial</a
                 >
               </p>
@@ -99,12 +101,12 @@
                 >
               </p>
               <p>
-                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="blog"
                   >Blog</a
                 >
               </p>
               <p>
-                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                <a class="inline-flex gap-x-2 hover:text-white" href="contact"
                   >Contact Us</a
                 >
               </p>
@@ -122,7 +124,9 @@
                 >
               </p>
               <p>
-                <a class="inline-flex gap-x-2 hover:text-white" href="#"
+                <a
+                  class="inline-flex gap-x-2 hover:text-white"
+                  href="product/#timeTracker"
                   >Time tracker</a
                 >
               </p>
@@ -134,14 +138,14 @@
               <p>
                 <a
                   class="text-gray-400 inline-flex gap-x-2 hover:text-white"
-                  href="#"
+                  href="product/#leadGeneration"
                   >Lead generate</a
                 >
               </p>
               <p>
                 <a
                   class="text-gray-400 inline-flex gap-x-2 hover:text-white"
-                  href="#"
+                  href="product/#remoteCollaboration"
                   >Remote collaboration</a
                 >
               </p>
@@ -150,7 +154,9 @@
           <!-- End Col -->
 
           <div class="col-span-2 text-white">
-            <p class="mb-9 text-3xl font-bold">{Finsweet</p>
+            <p class="mb-9 text-3xl font-bold">
+              <NuxtLink href="/">{Finsweet</NuxtLink>
+            </p>
 
             <h4 class="mb-4 text-lg font-semibold">
               Subscribe to our Newsletter

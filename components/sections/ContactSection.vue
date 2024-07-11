@@ -1,19 +1,15 @@
 <template>
   <section class="mb-16 mt-10 md:mb-24 md:mt-16 lg:mb-32 lg:mt-24">
-    <h1
-      class="mb-9 text-center text-3xl font-bold leading-[61.6px] md:mb-12 md:text-4xl lg:mb-16 lg:text-[56px]"
-    >
+    <h1 class="heading-1 mb-9 text-center md:mb-12 lg:mb-16">
       Get in touch with us
     </h1>
     <div
       class="grid w-full grid-cols-1 gap-16 rounded-3xl bg-[#f0f2fe] p-9 md:gap-24 md:p-12 lg:grid-cols-2 lg:gap-36 lg:p-16"
     >
       <div>
-        <h2
-          class="mb-2 text-2xl font-bold md:mb-3 md:text-3xl lg:mb-4 lg:text-4xl"
-        >
+        <h3 class="heading-3 mb-2 font-bold md:mb-3 lg:mb-4">
           Drop us a message
-        </h2>
+        </h3>
         <p class="mb-6 text-sm md:mb-9 md:text-base lg:mb-12 lg:text-lg">
           We will get back to you as soon as possible.
         </p>

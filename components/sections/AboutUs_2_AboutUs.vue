@@ -5,9 +5,7 @@
     >
       About Us
     </p>
-    <h2
-      class="mt-2 text-center text-3xl font-bold md:mt-4 md:text-4xl lg:mt-6 lg:text-5xl"
-    >
+    <h2 class="heading-2 mt-2 text-center md:mt-4 lg:mt-6">
       We're a team of data analysts
     </h2>
     <p

@@ -1,8 +1,6 @@
 <template>
   <section class="mt-12 flex flex-col items-center px-6 md:mt-16 lg:mt-24">
-    <h1 class="text-center text-4xl font-bold md:text-5xl lg:text-6xl">
-      We are proud of our products
-    </h1>
+    <h1 class="heading-1 text-center">We are proud of our products</h1>
     <p class="mt-6 max-w-screen-md text-center text-base md:text-lg">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
       eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

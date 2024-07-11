@@ -1,10 +1,9 @@
 <template>
   <section
+    id="feedback"
     class="relative mb-20 flex w-full flex-col items-center md:mb-24 lg:mb-32"
   >
-    <h2
-      class="mx-auto mb-6 max-w-3xl text-center text-3xl font-bold md:mb-9 md:text-4xl lg:mb-12 lg:text-5xl lg:leading-[57px]"
-    >
+    <h2 class="heading-2 mx-auto mb-6 max-w-3xl text-center md:mb-9 lg:mb-12">
       The stunning results our customers have experienced
     </h2>
 
@@ -28,11 +27,18 @@
       :pagination="{
         clickable: true,
       }"
-      class="h-[500px] max-w-full"
+      class="max-w-full"
     >
-      <SwiperSlide v-for="review in reviews" :key="review.id">
-        <ReviewItem v-bind="review" />
-      </SwiperSlide>
+      <template v-if="status === 'pending' || status === 'error'">
+        <SwiperSlide v-for="i in 3" :key="i">
+          <ReviewItemSkeleton />
+        </SwiperSlide>
+      </template>
+      <template v-else>
+        <SwiperSlide v-for="review in reviews" :key="review.id">
+          <ReviewItem v-bind="review" />
+        </SwiperSlide>
+      </template>
     </Swiper>
   </section>
 </template>
@@ -49,18 +55,20 @@ import "swiper/css/pagination";
 
 const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
 const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
-const fallbackImageUrl = "/uploads/fallback_user_506e9bc015.png";
 
 const reviews = ref<Review[]>([]);
 
-const { data, error } = await useFetch(
-  `${strapiApiUrl}/api/reviews?populate=*`,
-  {
+const { status, data, error } = await useLazyAsyncData("reviews", () =>
+  $fetch(`${strapiApiUrl}/api/reviews?populate=*`, {
     headers: {
       Authorization: `Bearer ${strapiApiKey}`,
     },
-  },
+  }),
 );
+
+watch(status, (newStatus) => {
+  console.log("status changed to", newStatus);
+});
 
 if (data.value) {
   const reviewData = (data.value as ClassDictionary).data;
@@ -68,7 +76,7 @@ if (data.value) {
   reviews.value = reviewData.map((review: ClassDictionary) => ({
     id: review.id,
     comment: review.attributes.Comment,
-    imageUrl: review.attributes.Image.data?.attributes.url || fallbackImageUrl,
+    imageUrl: review.attributes.Image.data?.attributes.url,
     imageAlt: review.attributes?.ImageAlt || "fallback image",
     fullName: review.attributes.FullName,
     position: review.attributes.Position,
@@ -76,6 +84,6 @@ if (data.value) {
 }
 
 if (error.value) {
-  console.error("Error fetching all posts:", error.value);
+  console.error("Error fetching all reviews:", error.value);
 }
 </script>

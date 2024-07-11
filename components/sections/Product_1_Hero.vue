@@ -3,9 +3,7 @@
     class="mt-12 box-content grid max-w-screen-xl grid-cols-1 gap-20 px-6 sm:px-10 md:mt-16 md:px-20 lg:mt-24 xl:grid-cols-2"
   >
     <div>
-      <h1 class="text-4xl font-bold md:text-5xl lg:text-6xl xl:mt-14">
-        Grow your Sales and Services
-      </h1>
+      <h1 class="heading-1 xl:mt-14">Grow your Sales and Services</h1>
       <p class="mt-6 max-w-[600px] text-base md:text-lg">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.

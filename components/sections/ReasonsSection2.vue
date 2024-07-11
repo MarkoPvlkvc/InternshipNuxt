@@ -8,9 +8,7 @@
       >
         Discover More
       </p>
-      <h2
-        class="mb-4 text-3xl font-bold md:mb-6 md:text-4xl lg:mb-8 lg:text-5xl lg:leading-[57px]"
-      >
+      <h2 class="heading-2 mb-4 md:mb-6 lg:mb-8">
         Analyze your sales and marketing leads
       </h2>
       <p>

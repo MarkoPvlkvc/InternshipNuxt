@@ -1,6 +1,7 @@
 export interface BlogPost {
   id: number;
   title: string;
+  shortContent: string;
   content: string;
   author: string;
   date: Date;
@@ -23,4 +24,12 @@ export interface Employee {
   imageAlt: string;
   fullName: string;
   position: string;
+}
+
+export interface Product {
+  subtitle: string;
+  title: string;
+  description: string;
+  image: string;
+  imageSide: "left" | "right";
 }

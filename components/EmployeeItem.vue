@@ -8,11 +8,9 @@
       class="h-40 w-full object-cover max-[450px]:h-32 md:h-48 lg:h-56"
     />
     <div class="px-6 py-4 max-[450px]:px-4 md:px-7 md:py-5 lg:px-8 lg:py-6">
-      <h4
-        class="text-lg font-bold !leading-5 max-[450px]:text-base md:text-xl lg:text-2xl"
-      >
+      <h5 class="heading-5 max-[450px]:text-base">
         {{ props.fullName }}
-      </h4>
+      </h5>
       <p class="mt-1 text-sm !leading-4 max-[450px]:text-xs md:text-base">
         {{ props.position }}
       </p>

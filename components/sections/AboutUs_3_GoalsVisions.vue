@@ -9,9 +9,7 @@
         >
           Our Goals
         </p>
-        <h2
-          class="mt-2 text-3xl font-bold md:mt-4 md:text-4xl lg:mt-6 lg:text-5xl"
-        >
+        <h2 class="heading-2 mt-2 md:mt-4 lg:mt-6">
           To upscale your business to the next level
         </h2>
         <p class="mt-4 text-sm md:mt-5 md:text-base lg:mt-6">
@@ -27,9 +25,7 @@
         >
           Our Vision
         </p>
-        <h2
-          class="mt-2 text-3xl font-bold md:mt-4 md:text-4xl lg:mt-6 lg:text-5xl"
-        >
+        <h2 class="heading-2 mt-2 md:mt-4 lg:mt-6">
           To provide solutions for growing companies
         </h2>
         <p class="mt-4 text-sm md:mt-5 md:text-base lg:mt-6">

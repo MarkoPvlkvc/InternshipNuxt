@@ -2,9 +2,7 @@
   <section
     class="relative mb-20 mt-9 flex w-full flex-col items-center md:mb-24 md:mt-12 md:w-[85%] lg:mb-32 lg:mt-24 lg:w-[75%]"
   >
-    <h1
-      class="mb-4 max-w-3xl text-wrap text-center text-3xl font-bold sm:text-4xl md:mb-6 md:text-5xl lg:mb-8 lg:text-6xl lg:leading-[60px]"
-    >
+    <h1 class="heading-1 mb-4 max-w-3xl text-wrap text-center md:mb-6 lg:mb-8">
       The Best Software to Grow your Sales and Services
     </h1>
     <p

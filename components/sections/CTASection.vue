@@ -1,8 +1,6 @@
 <template>
   <section class="relative mb-20 flex flex-col items-center md:mb-24 lg:mb-32">
-    <h2
-      class="mb-4 max-w-3xl text-center text-4xl font-bold md:text-5xl lg:mb-6 lg:text-[56px] lg:leading-[61px]"
-    >
+    <h2 class="heading-1 mb-4 max-w-3xl text-center lg:mb-6">
       Are you ready to grow your business with us?
     </h2>
     <p

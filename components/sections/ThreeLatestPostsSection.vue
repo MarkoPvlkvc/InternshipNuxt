@@ -7,8 +7,11 @@
     <div
       class="mx-6 mt-9 grid max-w-7xl grid-cols-1 gap-x-6 gap-y-16 md:mx-12 md:mt-12 md:grid-cols-2 lg:mx-20 lg:mt-16 lg:grid-cols-3"
     >
-      <template v-for="post in posts" :key="post.id">
-        <BlogPostItem v-bind="post" />
+      <template v-if="status === 'pending' || status === 'error'">
+        <BlogPostItemSkeleton v-for="i in 3" :key="i" />
+      </template>
+      <template v-else>
+        <BlogPostItem v-for="post in posts" :key="post.id" v-bind="post" />
       </template>
     </div>
   </section>
@@ -24,13 +27,15 @@ const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 
 const posts = ref<BlogPost[]>([]);
 
-const { data, error } = await useFetch(
-  `${strapiApiUrl}/api/blog-posts?populate=*&sort=createdAt:desc&pagination[pageSize]=3`,
-  {
-    headers: {
-      Authorization: `Bearer ${strapiApiKey}`,
+const { status, data, error } = await useLazyAsyncData("posts", () =>
+  $fetch(
+    `${strapiApiUrl}/api/blog-posts?populate=*&sort=createdAt:desc&pagination[pageSize]=3`,
+    {
+      headers: {
+        Authorization: `Bearer ${strapiApiKey}`,
+      },
     },
-  },
+  ),
 );
 
 if (data.value) {
@@ -39,6 +44,7 @@ if (data.value) {
   posts.value = postData.map((post: ClassDictionary) => ({
     id: post.id,
     title: post.attributes.Title,
+    shortContent: post.attributes.shortContent,
     content: extractFirstParagraph(post.attributes.Content),
     author: post.attributes.Author.data.attributes.FullName,
     date: new Date(post.attributes.Date),

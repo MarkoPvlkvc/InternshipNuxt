@@ -6,13 +6,9 @@
 
     <Product2Features1 />
 
-    <Product3Graph1 />
-
-    <Product4Graph2 />
-
-    <Product5Graph3 />
-
-    <Product6Graph4 />
+    <template v-for="product in products" :key="product.id">
+      <ProductGraph v-bind="product" />
+    </template>
 
     <Product7Features2 />
 
@@ -21,6 +17,43 @@
 </template>
 
 <script setup lang="ts">
+import type { Product } from "@/interfaces/interfaces";
+
+const products = ref<Product[]>([
+  {
+    subtitle: "Marketing insights",
+    title: "Data-driven client feedback",
+    description:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.",
+    image: "/conversions0.png",
+    imageSide: "right",
+  },
+  {
+    subtitle: "Time tracker",
+    title: "Track your project performance",
+    description:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.",
+    image: "/conversions2.png",
+    imageSide: "left",
+  },
+  {
+    subtitle: "Lead generation",
+    title: "More leads that convert",
+    description:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.",
+    image: "/conversions1.png",
+    imageSide: "right",
+  },
+  {
+    subtitle: "Remote teams",
+    title: "Real-time collaboration",
+    description:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.",
+    image: "/conversions1.png",
+    imageSide: "left",
+  },
+]);
+
 useSeoMeta({
   title: "Product",
   ogTitle: "QED Internship Nuxt - Product",

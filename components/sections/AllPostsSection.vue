@@ -1,14 +1,15 @@
 <template>
   <section class="mt-16 md:mt-24 lg:mt-32">
-    <h2 class="text-center text-4xl font-bold md:text-5xl lg:text-6xl">
-      All posts
-    </h2>
+    <h2 class="heading-2 text-center">All posts</h2>
 
     <div
       class="mx-6 mt-9 grid max-w-7xl grid-cols-1 gap-x-6 gap-y-16 md:mx-12 md:mt-12 md:grid-cols-2 lg:mx-20 lg:mt-16 lg:grid-cols-3"
     >
-      <template v-for="post in posts" :key="post.id">
-        <BlogPostItem v-bind="post" />
+      <template v-if="status === 'pending' || status === 'error'">
+        <BlogPostItemSkeleton v-for="i in 3" :key="i" />
+      </template>
+      <template v-else>
+        <BlogPostItem v-for="post in posts" :key="post.id" v-bind="post" />
       </template>
     </div>
 
@@ -32,7 +33,6 @@ import type { BlogPost } from "@/interfaces/interfaces";
 
 const strapiApiKey = useRuntimeConfig().public.strapiApiKey;
 const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
-const fallbackImage = "/uploads/fallback_blog_image_d67d69f3e1.png";
 
 const route = useRoute();
 const pageCount = ref(0);
@@ -45,32 +45,40 @@ const navigateToPage = (pageNumber: number) => {
   });
 };
 
-const { data } = useFetch(`${strapiApiUrl}/api/blog-posts?`, {
-  query: {
-    populate: "*",
-    "pagination[page]": page,
-    "pagination[pageSize]": "3",
-  },
-  headers: {
-    Authorization: `Bearer ${strapiApiKey}`,
-  },
+const { data, pending, error, refresh } = await useLazyAsyncData(() =>
+  $fetch(`${strapiApiUrl}/api/blog-posts`, {
+    params: {
+      populate: "*",
+      "pagination[page]": page.value,
+      "pagination[pageSize]": "3",
+    },
+    headers: {
+      Authorization: `Bearer ${strapiApiKey}`,
+    },
+  }),
+);
+
+const status = computed(() => {
+  if (pending.value) return "pending";
+  if (error.value) return "error";
+  if (data.value) return "success";
+  return "pending";
 });
 
 const posts = computed<BlogPost[]>(() => {
   if (data.value) {
     const postData = (data.value as ClassDictionary).data;
 
-    const allPosts = postData.map((post: ClassDictionary) => ({
+    return postData.map((post: ClassDictionary) => ({
       id: post.id,
       title: post.attributes.Title,
+      shortContent: post.attributes.shortContent,
       content: extractFirstParagraph(post.attributes.Content),
       author: post.attributes.Author.data.attributes.FullName,
       date: new Date(post.attributes.Date),
-      imageUrl: post.attributes.Image.data?.attributes.url || fallbackImage,
-      imageAlt: post.attributes.ImageAlt,
+      imageUrl: post.attributes.Image.data?.attributes.url,
+      imageAlt: post.attributes.Image.data.attributes.alternativeText,
     }));
-
-    return allPosts;
   } else {
     return [];
   }
@@ -84,6 +92,7 @@ watchEffect(() => {
 
 watchEffect(() => {
   page.value = (route.query.page as string) || "1";
+  refresh();
 });
 </script>
 

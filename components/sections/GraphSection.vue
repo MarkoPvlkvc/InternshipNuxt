@@ -13,9 +13,7 @@
       class="mx-auto mb-16 grid w-full max-w-[1440px] grid-cols-1 gap-12 px-9 py-10 font-roboto text-black md:px-12 md:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-16"
     >
       <div class="flex flex-col items-center justify-center lg:items-start">
-        <h2
-          class="mb-2 text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6 lg:text-5xl"
-        >
+        <h2 class="heading-2 mb-2 md:mb-4 lg:mb-6">
           More impressions, more conversions
         </h2>
         <p class="mb-4 text-sm md:mb-6 md:text-base lg:mb-8 lg:text-lg">

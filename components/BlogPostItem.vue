@@ -10,13 +10,11 @@
         class="h-full w-full object-cover transition-all group-hover:scale-105"
       />
     </div>
-    <h3
-      class="mt-4 text-lg font-bold group-hover:underline md:mt-8 md:text-xl lg:text-2xl"
-    >
+    <h5 class="heading-5 mt-4 group-hover:underline md:mt-8">
       {{ props.title }}
-    </h3>
-    <p class="mt-3 md:mt-4">
-      {{ shortenContent(props.content) }}
+    </h5>
+    <p class="mt-3 line-clamp-3 text-ellipsis md:mt-4">
+      {{ props.shortContent }}
     </p>
     <p class="mt-4 font-medium text-[#6D6E76]">
       {{ props.author }} | {{ formatDate(props.date) }}
@@ -25,14 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import { navigateTo } from "nuxt/app";
 import type { BlogPost } from "@/interfaces/interfaces";
+import navigateToPost from "@/utils/navigateToPost";
 
 const strapiApiUrl = useRuntimeConfig().public.strapiApiUrl;
 
 const props = defineProps<BlogPost>();
-
-const navigateToPost = (id: number) => {
-  navigateTo({ path: `/blog/${id}` });
-};
 </script>
