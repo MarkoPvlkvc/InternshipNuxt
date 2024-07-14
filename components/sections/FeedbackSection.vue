@@ -27,7 +27,7 @@
       :pagination="{
         clickable: true,
       }"
-      class="max-w-full"
+      class="w-fit max-w-screen-xl"
     >
       <template v-if="status === 'pending' || status === 'error'">
         <SwiperSlide v-for="i in 3" :key="i">
